@@ -62,7 +62,11 @@ public class SwitchableHole extends Hole {
 	
 	//Kiíró függvény
 	public void printField(FileWriter output) throws IOException {
-		output.write('K');
-		output.write(number);
+		if (state) output.write('H');
+ 	 	else 
+		{
+          		output.write('K');
+       			output.write(number);
+           	}
 	}
 }
