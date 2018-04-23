@@ -1,6 +1,7 @@
 import java.io.FileWriter;
 import java.io.IOException;
 
+//Játékban az olajat reprezentálja, amely könnyebbé teszi a ládák mozgatását.
 public class Oil extends Surface {
 
 	public Oil(Field f) {
@@ -8,7 +9,8 @@ public class Oil extends Surface {
 		super.field = f;
 		f.setSurface(this);
 	}
-
+	
+	//Kiíró függvény
 	public void printSurface(FileWriter output) throws IOException {
 		output.write('O');
 	}
