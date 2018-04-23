@@ -72,7 +72,7 @@ public class Pallet extends Field {
        		 if (color == Color.red) output.write('R');
         	 else output.write('B');
               }
-        	esle output.write('N');
+        	else output.write('N');
 	}
 
 }
