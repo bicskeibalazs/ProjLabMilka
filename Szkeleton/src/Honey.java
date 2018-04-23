@@ -1,6 +1,7 @@
 import java.io.FileWriter;
 import java.io.IOException;
 
+//Játékban a mézet reprezentálja, amely nehezebbé teszi a ládák mozgatását.
 public class Honey extends Surface {
 
 	public Honey(Field f) {
