@@ -3,8 +3,10 @@ import java.io.IOException;
 
 //Reprentálja a Fieldekre letehető dolgokat (olaj, méz).
 public class Surface {
-
+	
+	//Egy láda tolásának nehezítésére vagy könnyítésére szolgáló változó.
 	protected int extraForceNeeded;
+	// Egy mező, amelyen a Surface van.
 	protected Field field;
 
 	public Surface() {
