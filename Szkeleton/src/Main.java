@@ -125,6 +125,7 @@ public class Main {
 		}
 
 		boolean exit = false;
+		printToTxt(warehouse);
 		while (!exit) {
 			System.out.print("Bemenet: ");
 			inputchar = (char) System.in.read();
