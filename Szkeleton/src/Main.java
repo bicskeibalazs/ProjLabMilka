@@ -228,6 +228,7 @@ else  {
 			inputchar = (char) System.in.read();
 			printToTxt(warehouse);
 		}
+	}
 }         
 		
 	// Kiírás fáljba
