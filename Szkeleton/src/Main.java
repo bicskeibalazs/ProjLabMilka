@@ -12,14 +12,10 @@ public class Main {
 	public static void main(String[] args) throws Exception {
 		
 		 boolean istest = true;  
-   		/*System.out.println("(0) Játék\n(1) Teszt\n") 
-    		int n = Integer.parseInt(System.console().readLine());
-    		if (n==0) istest = false;
- 		      else istest = true;
     		if (istest) System.out.println("Teszteset1 Halál, falhoz nyomás miatt \nTeszteset2 Kapcsoló deaktiválása \nTeszteset3 Láda mozgatása\nTeszteset4 Kapcsoló aktiválása" +
 				"Teszteset5 Halál; lyukba érkezése következtében\nTeszteset6 Munkás mozog\nTeszteset7 Játékos pontot kap\nTeszteset8 " +
                         "Halál; kapcsoló aktiválódott\nTeszteset9 Láda lyukba esik\nTeszteset10 Játékost láda tolja\nTeszteset11 Munkás sikertelen mozgása\n" +
-                       "Teszteset12 Olaj lerakása\nTeszteset13 Méz lerakása"); */
+                       "Teszteset12 Olaj lerakása\nTeszteset13 Méz lerakása\n"); */
 		
 		
 		Warehouse warehouse = new Warehouse();
