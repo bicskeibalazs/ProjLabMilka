@@ -11,8 +11,8 @@ public class Main {
 
 	public static void main(String[] args) throws Exception {
 		
-		 /*boolean istest = true;  
-   		 System.out.println("(0) Játék\n(1) Teszt\n") 
+		 boolean istest = true;  
+   		/* System.out.println("(0) Játék\n(1) Teszt\n") 
    		 int i = System.in.read();
    		 if (i==0) istest = false;
    		 else istest = true;
@@ -126,8 +126,59 @@ public class Main {
 
 		boolean exit = false;
 		printToTxt(warehouse);
-		while (!exit) {
-			System.out.print("Bemenet: ");
+// TESZTELŐ MÓD
+    if (istest){
+      while(!exit) {
+        	System.out.print("Piros jatekos erre mozog: ");
+        	inputchar = (char) System.in.read();
+        	switch(Character.toUpperCase(inputchar)) {
+                  case 'W' : warehouse.getWorker(Color.red).move(Direction.up);
+                             break;
+                  case 'A' : warehouse.getWorker(Color.red).move(Direction.left);
+                             break;
+                  case 'S' : warehouse.getWorker(Color.red).move(Direction.down);
+                             break;
+                  case 'D' : warehouse.getWorker(Color.red).move(Direction.right);
+                             break;
+             	case 'Q' : if(!warehouse.getWorker(Color.red).getOilDeployed()) warehouse.getWorker(Color.red).DeployOil();
+                             break;
+                  case 'E' : if(!warehouse.getWorker(Color.red).getHoneyDeployed()) warehouse.getWorker(Color.red).DeployHoney();
+                             break;
+                  case 'X' : exit = true;
+                             break;
+                  default :  break;
+              
+            }
+      	inputchar = (char) System.in.read();
+       	inputchar = (char) System.in.read();
+        	System.out.print("Kek jatekos erre mozog: ");
+        	inputchar = (char) System.in.read();
+        	switch(Character.toUpperCase(inputchar)) {
+                  case 'W' : warehouse.getWorker(Color.blue).move(Direction.up);
+                             break;
+                  case 'A' : warehouse.getWorker(Color.blue).move(Direction.left);
+                             break;
+                  case 'S' : warehouse.getWorker(Color.blue).move(Direction.down);
+                             break;
+                  case 'D' : warehouse.getWorker(Color.blue).move(Direction.right);
+                             break;
+              	case 'Q' : if(!warehouse.getWorker(Color.blue).getOilDeployed()) warehouse.getWorker(Color.blue).DeployOil();
+                             break;
+                  case 'E' : if(!warehouse.getWorker(Color.blue).getHoneyDeployed()) warehouse.getWorker(Color.blue).DeployHoney();
+                             break;
+                  case 'X' : exit = true;
+                             break;
+                  default :  break;
+              
+            }
+       	inputchar = (char) System.in.read();
+            inputchar = (char) System.in.read();
+          	printToTxt(warehouse);
+	}
+    }
+    //JÁTÉK MÓD     
+else  {    
+               while (!exit) {
 			inputchar = (char) System.in.read();
 			switch (Character.toUpperCase(inputchar)) {
 			case 'W':
@@ -142,6 +193,30 @@ public class Main {
 			case 'D':
 				warehouse.getWorker(Color.red).move(Direction.right);
 				break;
+                  case 'Q': 
+                        if(!warehouse.getWorker(Color.red).getOilDeployed()) warehouse.getWorker(Color.red).DeployOil();
+                        break;
+                  case 'E' : 
+                        if(!warehouse.getWorker(Color.red).getHoneyDeployed()) warehouse.getWorker(Color.red).DeployHoney();
+                        break;
+                  case 'I':
+				warehouse.getWorker(Color.blue).move(Direction.up);
+				break;
+			case 'J':
+				warehouse.getWorker(Color.blue).move(Direction.left);
+				break;
+			case 'K':
+				warehouse.getWorker(Color.blue).move(Direction.down);
+				break;
+			case 'L':
+				warehouse.getWorker(Color.blue).move(Direction.right);
+				break;
+                  case 'U': 
+                        if(!warehouse.getWorker(Color.blue).getOilDeployed()) warehouse.getWorker(Color.blue).DeployOil();
+                        break;
+                  case 'O' : 
+                        if(!warehouse.getWorker(Color.blue).getHoneyDeployed()) warehouse.getWorker(Color.blue).DeployHoney();
+                        break;
 			case 'X':
 				exit = true;
 				break;
@@ -153,7 +228,8 @@ public class Main {
 			inputchar = (char) System.in.read();
 			printToTxt(warehouse);
 		}
-	}
+}         
+		
 	// Kiírás fáljba
 
 	public static void printToTxt(Warehouse warehouse) throws IOException {
