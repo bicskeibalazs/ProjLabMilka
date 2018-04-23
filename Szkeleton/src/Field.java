@@ -2,6 +2,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 
+//Ismeri a szomszédos mezőket. Tudja, hogy van-e rajta Movable.
+//Figyeli, hogy az adott irányban milyen szomszéd mezői vannak,
+//és ha valaki éppen oda akarna lépni vagy mozogni,
+//akkor megvizsgálja, hogy lehetséges-e ez az interakció. 
+
 public class Field {
 
 	protected Movable movable;
@@ -35,13 +40,17 @@ public class Field {
 	public Field getNeighbors(Direction d) {
 		return neighbors.get(d);
 	}
-
+	
+	//Az adott mezőről egy irányba történő mozgás megkezdésére irányuló metódus.
 	public void wantsToMoveFrom(Direction d) {
 		Field neighborInDirection = getNeighbors(d);
 		if (neighborInDirection.wantsToMoveHere(d, movable)) {
 			setMovable(null);
 		}
 	}
+	
+	// Egy Movable-t egy adott irányba lévő mezőre akarja mozgatni.
+	//Ha sikeres a mozgás true-val tér vissza, ha sikertelen akkor false-al.
 
 	public boolean wantsToMoveHere(Direction d, Movable m) {
 		if (!isOccupied()) {
@@ -84,13 +93,21 @@ public class Field {
 			}
 		}
 	}
-
+	// Megnézi, hogy vannak-e éppen az adott mezőn.
 	public boolean isOccupied() {
 		if (movable == null)
 			return false;
 		else
 			return true;
 	}
+	//Egy Crate típusú objektum egy megadott irányba szeretne mozogni,
+	//ahol éppen egy másik Crate áll. Ha a mozgás még így is sikeres (pl több ládát tolunk egyszerre),
+	//akkor true-val térünk vissza, ha sikertelen, akkor false-sal.
+	//Megvizsgálja a movableWantsToMoveHereforceRemainingjét,
+	//és ha az nulla, akkor false-al tér vissza, 
+	//egyébként pedig a movableWantsToMoveHere forceRemainingjéből kiszámolja
+	//a movableAlreadyHereforceRemainingjét a surface extraForceNeeded attribútuma segítségével,
+	//és ha a movableAlreadyHere.setForceRemaining()-je false-al tér vissza, someoneMovesHere() is.
 
 	public boolean someoneMovesHere(Direction d, Crate movableWhoWantsToMoveHere, Crate movableAlreadyHere) {
 		if (movableWhoWantsToMoveHere.getForceRemaining() == 0)
@@ -110,6 +127,11 @@ public class Field {
 			}
 		}
 	}
+	
+	//Egy Crate típusú objektum egy megadott irányba szeretne mozogni, 
+	//ahol éppen egy munkás áll. Ha a mozgás még így is sikeres 
+	//(pl a munkás éppen el tud mozdulni a mezőjéről, ahová a Crate mozdulna),
+	//akkor true-val térünk vissza, ha sikertelen, akkor false-sal.
 
 	public boolean someoneMovesHere(Direction d, Crate movableWhoWantsToMoveHere, Worker movableAlreadyHere) {
 		if (movableWhoWantsToMoveHere.getForceRemaining() == 0)
@@ -134,7 +156,15 @@ public class Field {
 			}
 		}
 	}
-
+	
+	//Egy Worker típusú objektum egy megadott irányba szeretne mozogni,
+	//ahol éppen egy Crate áll. Ha a mozgás még így is sikeres (legegyszerűbb eset: sima tolás),
+	//akkor true-val térünk vissza, ha sikertelen, akkor false-sal.
+	//Megvizsgálja a movableWantsToMoveHere setforceRemainingjét, és ha az nulla,
+	//akkor false-al tér vissza,egyébként pedig a movableWantsToMoveHere strenghtjéből
+	//kiszámolja amovableAlreadyHere forceRemainingjét a surface extraForceNeeded
+	//attribútumasegítségével, és ha a movableAlreadyHere.setForceRemaining()-je
+	//false-al tér vissza,someoneMovesHere()
 	public boolean someoneMovesHere(Direction d, Worker movableWhoWantsToMoveHere, Crate movableAlreadyHere) {
 		if (movableWhoWantsToMoveHere.isBeingPushed())
 			return false;
@@ -154,11 +184,16 @@ public class Field {
 			}
 		}
 	}
-
+	
+	//Egy Worker típusú objektum egy megadott irányba szeretne mozogni,
+	//ahol éppen egy másik munkás áll. Ha a mozgás még így is sikeres
+	//(a másik munkás pontosan akkor mozog el, amikor jön a mozgást kezdeményező munkás),
+	//akkor true-val térünk vissza, ha sikertelen, akkor false-sal (egymást nem tolhatják).
 	public boolean someoneMovesHere(Direction d, Worker movableWhoWantsToMoveHere, Worker movableAlreadyHere) {
 		return false;
 	}
-
+	
+	//Kiíró függvények Field/Surface/Movable
 	public void printField(FileWriter output) throws IOException {
 		output.write('F');
 	}
