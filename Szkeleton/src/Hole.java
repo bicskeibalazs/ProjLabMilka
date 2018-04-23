@@ -6,6 +6,7 @@ public class Hole extends Field {
 
 	//Megöli az erre a mezőre mozgó Movable-t.
 	public boolean wantsToMoveHere(Direction d, Movable m) {
+		m.die();
 		return true;
 	}
 	
