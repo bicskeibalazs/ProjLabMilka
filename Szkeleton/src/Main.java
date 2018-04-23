@@ -11,7 +11,7 @@ public class Main {
 
 	public static void main(String[] args) throws Exception {
 		
-		 boolean istest = true;  
+		 /*boolean istest = true;  
    		 System.out.println("(0) Játék\n(1) Teszt\n") 
    		 int i = System.in.read();
    		 if (i==0) istest = false;
@@ -19,7 +19,7 @@ public class Main {
    		 if (istest) System.out.println("Teszteset1 Halál, falhoz nyomás miatt \nTeszteset2 Kapcsoló deaktiválása \nTeszteset3 Láda mozgatása\nTeszteset4 Kapcsoló aktiválása" +
 						"Teszteset5 Halál; lyukba érkezése következtében\nTeszteset6 Munkás mozog\nTeszteset7 Játékos pontot kap\nTeszteset8 " +
              	         			"Halál; kapcsoló aktiválódott\nTeszteset9 Láda lyukba esik\nTeszteset10 Játékost láda tolja\nTeszteset11 Munkás sikertelen mozgása\n" +
-               		       			"Teszteset12 Olaj lerakása\nTeszteset13 Méz lerakása"); 
+               		       			"Teszteset12 Olaj lerakása\nTeszteset13 Méz lerakása"); */
 		
 		
 		Warehouse warehouse = new Warehouse();
@@ -44,14 +44,14 @@ public class Main {
 					break;
 				case 'S':
 					warehouse.setField(i, j, new Switch(input.read()));
-					warehouse.addSwitches(warehouse.getField(i,j));
+					warehouse.addSwitch((Switch)warehouse.getField(i,j));
 					break;
 				case 'N':
 					warehouse.setField(i, j, new NotSteppable());
 					break;
 				case 'K':
 					warehouse.setField(i, j, new SwitchableHole(input.read()));
-					warehouse.addSwitchableHole(warehouse.getField(i,j));
+					warehouse.addSwitchableHole((SwitchableHole)warehouse.getField(i,j));
 					break;
 				case 'P':
 					inputchar = (char) input.read();
