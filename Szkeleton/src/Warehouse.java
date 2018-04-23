@@ -1,23 +1,33 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 
+//A raktárat reprezentálja.
 public class Warehouse {
-
+	
+	//A dolgozókat reprezentálja a raktárban.
 	private HashMap<Color, Worker> workers;
+	//A ládák a raktárban
 	private ArrayList<Crate> crates;
+	//Kapcsolók a raktárban
 	private ArrayList<Switch> switches;
+	//Kapcsolható lyukak a raktárban
 	private ArrayList<SwitchableHole> switchableHoles;
+	//Egy dolgozó pontjainak száma. (Piros, kék)
 	private HashMap<Color, Integer> points;
+	//A raktár mezői a megfelelő sorrendben
 	private Field fields[][];
-
+	
+	//Felvesz egy munkást, színnel együtt
 	public void addWorker(Color c, Worker w) {
 		workers.put(c, w);
 	}
-
+	
+	//Hozzáad egy új ládát
 	public void addCrate(Crate c) {
 		crates.add(c);
 	}
 	
+	//Hozzáad egy kapcsolót
 	public void addSwitch(Switch s){
         	switches.add(s);
       }
@@ -64,7 +74,8 @@ public class Warehouse {
 		points.put(Color.blue, 0);
 		points.put(Color.red, 0);
 	}
-
+	
+	//Összekapcsolása a kapcsolható lyukak és a kapcsolóknak
 	public void connectSwitches() {
 		Switch s;
 		SwitchableHole sh;
@@ -79,7 +90,8 @@ public class Warehouse {
 			}
 		}
 	}
-
+	
+	//A dolgozó pontjának számát növeli eggyel.
 	public void addPoint(Color c) {
 		int i = points.get(c);
 		points.remove(c);
@@ -89,7 +101,8 @@ public class Warehouse {
 	public int getPoints(Color c) {
 		return points.get(c);
 	}
-
+	
+	//Töröl egy ládát.
 	public void deleteCrate(Crate c) {
 		crates.remove(c);
 	}
