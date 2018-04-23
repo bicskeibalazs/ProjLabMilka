@@ -4,8 +4,10 @@ import java.io.IOException;
 //Egy raklapot reprezentál, amelyre a dolgozóknak ládát(Crate) kell tolnia,
 //ezután nem kerülhet rá movable. (Örökölt felelősség: ld. Field.)
 public class Pallet extends Field {
-
+	
+	//A raklapokhoz tartozó raktár.
 	private Warehouse warehouse;
+	//Raklap színe.
 	private Color color;
 
 	public Warehouse getWarehouse() {
