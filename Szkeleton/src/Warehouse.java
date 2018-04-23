@@ -17,6 +17,14 @@ public class Warehouse {
 	public void addCrate(Crate c) {
 		crates.add(c);
 	}
+	
+	public void addSwitch(Switch s){
+        	switches.add(s);
+      }
+  
+  	public void addSwitchableHole(SwitchableHole sw){
+        	switchableHoles.add(sw);
+      }
 
 	public Field getField(int i, int j) {
 		return fields[i][j];
