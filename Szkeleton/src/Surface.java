@@ -1,6 +1,7 @@
 import java.io.FileWriter;
 import java.io.IOException;
 
+//Reprentálja a Fieldekre letehető dolgokat (olaj, méz).
 public class Surface {
 
 	protected int extraForceNeeded;
@@ -31,7 +32,8 @@ public class Surface {
 	public void setExtreaForceNeeded(int fr) {
 		extraForceNeeded = fr;
 	}
-
+	
+	//Kiíró függvény
 	public void printSurface(FileWriter output) throws IOException {
 		output.write('X');
 	}
