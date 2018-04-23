@@ -65,7 +65,7 @@ public class Pallet extends Field {
 		return false;
 	}
   	
-  	public void printField(FileWriter output) {
+  	public void printField(FileWriter output) throws IOException {
  	 	if (steppable){
              	 output.write('P');
        		 output.write('/');
