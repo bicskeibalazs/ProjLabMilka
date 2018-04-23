@@ -10,6 +10,18 @@ import java.io.InputStream;
 public class Main {
 
 	public static void main(String[] args) throws Exception {
+		
+		 boolean istest = true;  
+   		 System.out.println("(0) Játék\n(1) Teszt\n") 
+   		 int i = System.in.read();
+   		 if (i==0) istest = false;
+   		 else istest = true;
+   		 if (istest) System.out.println("Teszteset1 Halál, falhoz nyomás miatt \nTeszteset2 Kapcsoló deaktiválása \nTeszteset3 Láda mozgatása\nTeszteset4 Kapcsoló aktiválása" +
+						"Teszteset5 Halál; lyukba érkezése következtében\nTeszteset6 Munkás mozog\nTeszteset7 Játékos pontot kap\nTeszteset8 " +
+             	         			"Halál; kapcsoló aktiválódott\nTeszteset9 Láda lyukba esik\nTeszteset10 Játékost láda tolja\nTeszteset11 Munkás sikertelen mozgása\n" +
+               		       			"Teszteset12 Olaj lerakása\nTeszteset13 Méz lerakása"); 
+		
+		
 		Warehouse warehouse = new Warehouse();
 		char inputchar;
 		Color color;
@@ -32,12 +44,14 @@ public class Main {
 					break;
 				case 'S':
 					warehouse.setField(i, j, new Switch(input.read()));
+					warehouse.addSwitches(warehouse.getField(i,j));
 					break;
 				case 'N':
 					warehouse.setField(i, j, new NotSteppable());
 					break;
 				case 'K':
 					warehouse.setField(i, j, new SwitchableHole(input.read()));
+					warehouse.addSwitchableHole(warehouse.getField(i,j));
 					break;
 				case 'P':
 					inputchar = (char) input.read();
@@ -99,7 +113,7 @@ public class Main {
 		warehouse.connectSwitches();
 		// System.out.println(warehouse.getWorker(Color.red));
 
-		// neighbors be�ll�t�sa
+		// neighbors beállítása
 		for (int i = 1; i < 11; i++) {
 			for (int j = 1; j < 11; j++) {
 				actualField = warehouse.getField(i, j);
@@ -139,7 +153,7 @@ public class Main {
 			printToTxt(warehouse);
 		}
 	}
-	// Ki�r�s f�ljba
+	// Kiírás fáljba
 
 	public static void printToTxt(Warehouse warehouse) throws IOException {
 		FileWriter output = new FileWriter("outputmap.txt");
