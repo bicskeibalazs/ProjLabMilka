@@ -8,9 +8,12 @@ import java.util.HashMap;
 //akkor megvizsgálja, hogy lehetséges-e ez az interakció. 
 
 public class Field {
-
+	
+	//Számon tartja, hogy rajta milyen Movable típusú objektum áll.
 	protected Movable movable;
+	//szomszéd mezőket reprezentálja
 	protected HashMap<Direction, Field> neighbors;
+	//Számon tartja, hogy rajta milyen Surface típusú objektum áll.
 	protected Surface surface;
 
 	public Field() {
