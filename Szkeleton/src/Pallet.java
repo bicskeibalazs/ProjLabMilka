@@ -40,6 +40,7 @@ public class Pallet extends Field {
   	public boolean wantsToMoveHere(Direction d, Movable m) {
         	if(super.wantsToMoveHere(d, m)) {
               	warehouse.addPoint(color);
+		steppable = false;
               	return true;
             }
         	else return false;
