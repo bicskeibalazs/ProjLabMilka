@@ -57,7 +57,50 @@ public class SwitchableHole extends Hole {
 		if (state)
 			return true;
 		else
-			return super.wantsToMoveHere(d, m);
+			return inactiveMoveHere(d, m);
+	}
+
+	//Segédfüggvény, hogy inaktív állapotban mezőként viselkedjen a lyuk.
+	private boolean inactiveMoveHere(Direction d, Movable m) {
+		if (!isOccupied()) {
+			setMovable(m);
+			m.setField(this);
+			return true;
+		} else {
+			if (m.isCrate()) {
+				if (movable.isCrate()) {
+					if (someoneMovesHere(d, (Crate) m, (Crate) movable)) {
+						m.setField(this);
+						setMovable(m);
+						return true;
+					} else
+						return false;
+				} else {
+					if (someoneMovesHere(d, (Crate) m, (Worker) movable)) {
+						m.setField(this);
+						setMovable(m);
+						return true;
+					} else
+						return false;
+				}
+			} else {
+				if (movable.isCrate()) {
+					if (someoneMovesHere(d, (Worker) m, (Crate) movable)) {
+						m.setField(this);
+						setMovable(m);
+						return true;
+					} else
+						return false;
+				} else {
+					if (someoneMovesHere(d, (Worker) m, (Worker) movable)) {
+						m.setField(this);
+						setMovable(m);
+						return true;
+					} else
+						return false;
+				}
+			}
+		}
 	}
 	
 	//Kiíró függvény
